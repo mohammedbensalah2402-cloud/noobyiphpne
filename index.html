@@ -479,5 +479,106 @@
             });
         });
     </script>
+
+<style>
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #0b1a2f url('your-background-image.jpg') center/cover no-repeat;
+  }
+
+  /* TikTok Popup Overlay */
+  #ios-popup {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  display: none;
+  justify-content: center;   /* Center horizontally */
+  align-items: center;       /* Center vertically */
+  background: rgba(0,0,0,0.6);
+  padding: 20px;
+  box-sizing: border-box;
+  z-index: 9999;
+}
+
+  #ios-popup .popup {
+    background: #fff;
+    color: #000;
+    padding: 20px;
+    border-radius: 15px;
+    max-width: 500px;
+    width: 100%;
+    text-align: left;
+    font-size: 16px;
+    line-height: 1.5;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  }
+
+  .highlight {
+    color: #0056ff;
+    font-weight: 600;
+  }
+  .tiktok-icon img {
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+    margin: 0 4px;
+  }
+  .three-dots img {
+    width: 22px;
+    height: 22px;
+    vertical-align: middle;
+    margin: 0 4px;
+  }
+
+  /* Normal page */
+  #normal-page {
+    display: none;
+    padding: 20px;
+    text-align: center;
+    color: #fff;
+  }
+</style>
+</head>
+<body>
+
+<div id="ios-popup">
+  <div class="popup">
+    To continue, please open this page in your main browser (Safari, Chrome, etc).<br><br>
+    In 
+    <span class="tiktok-icon">
+      <img src="https://u.cubeupload.com/satawis/3116491.png" alt="TikTok">
+    </span>
+    TikTok, tap the 
+    <span class="three-dots">
+      <img src="https://u.cubeupload.com/satawis/27013226troispointsi.jpg" alt="More Options">
+    </span> 
+    icon and then select <span class="highlight">"Open in browser"</span>.
+  </div>
+</div>
+
+<script>
+function isTikTokBrowser() {
+  const ua = navigator.userAgent || navigator.vendor || window.opera;
+  return /TikTok/i.test(ua) || ua.includes('Aweme') || ua.includes('musical_ly_');
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+  if (isTikTokBrowser()) {
+    document.getElementById('ios-popup').style.display = 'flex';
+  } else {
+    document.getElementById('normal-page').style.display = 'block';
+  }
+});
+</script>
+
+
+
+
+
+
+
+
+
+    
 </body>
 </html>
